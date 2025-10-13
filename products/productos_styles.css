@@ -1,0 +1,165 @@
+/* Estilo principal */
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+}
+header{
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+}
+nav {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+a{text-decoration: none}
+
+a:hover{color: lightblue;}
+
+main{margin: 40px}
+
+section{
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+aside{
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+footer{
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 30px
+}
+
+.btn-comprar {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn-comprar:hover {
+  background-color: #0056b3;
+}
+
+/* Logo Efecto */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 125px;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+/* Estilo para productos */
+
+.productos-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.producto {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.producto img {
+  width: 100%;
+  height: 220px; 
+  object-fit: contain; 
+  margin-bottom: 15px;
+}
+
+.precio {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+}
+
+.precio .antes {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  color: gray;
+  text-decoration: line-through;
+  margin-bottom: 3px;
+}
+
+.colores {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.color {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+.color.gris { background-color: gray; }
+.color.blanco { background-color: white; }
+.color.negro { background-color: black; }
+.color.azul { background-color: blue;}
+.color.fucsia { background-color: fuchsia;}
+
+.btn-comprar {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-comprar:hover {
+    background-color: #0056b3;
+}
