@@ -28,6 +28,7 @@ a:hover{color: lightblue;}
 
 main{margin: 40px}
 section{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     background: white;
     border-radius: 12px;
     padding: 30px;
