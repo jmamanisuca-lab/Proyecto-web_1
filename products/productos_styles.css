@@ -1,7 +1,6 @@
 /* Estilo principal */
-
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     background: #f5f5f5;
     margin: 0;
 }
@@ -13,6 +12,7 @@ header{
     top: 0;
 }
 nav {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     display: flex;
     justify-content: space-between;
