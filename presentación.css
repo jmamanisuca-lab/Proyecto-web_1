@@ -10,6 +10,7 @@ header{
     position: sticky;
     top: 0;
 }
+/* Estilo del nav */
 nav {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
@@ -21,6 +22,34 @@ ul {
     display: flex;
     gap: 30px;
     list-style: none;
+}
+
+nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #c30000;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff4444;
+    transform: scale(1.15);
+    text-shadow: 0 0 6px rgba(255, 50, 50, 0.6);
+}
+
+nav ul li a:active {
+    transform: scale(0.95);
+    color: #ff1a1a;
+}
+
+nav ul li a:visited {
+    color: #8b0000;
+}
+
+nav ul li a:focus {
+    outline: 2px solid #ff8888;
+    border-radius: 4px;
 }
 
 section ul {
@@ -372,7 +401,7 @@ footer{
     background: #000;
     color: #fff;
     gap: 30px;
-    margin-bottom: 50px; /* evita que el footer se suba */
+    margin-bottom: 50px;
 }
 
 .about-text {
@@ -393,10 +422,9 @@ footer {
     text-align: center;
     padding: 15px 5px;
     font-size: 18px;
-    clear: both; /* asegura que no se superponga */
+    clear: both;
 }
 
-/* Responsivo */
 @media (max-width: 900px) {
     .about-zone {
         flex-direction: column;

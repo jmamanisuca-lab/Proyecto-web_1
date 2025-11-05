@@ -12,6 +12,7 @@ header {
     top: 0;
 }
 
+/* Estilo del nav */
 nav {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
@@ -19,11 +20,38 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
-
 ul {
     display: flex;
     gap: 30px;
     list-style: none;
+}
+
+nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: #c30000;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff4444;
+    transform: scale(1.15);
+    text-shadow: 0 0 6px rgba(255, 50, 50, 0.6);
+}
+
+nav ul li a:active {
+    transform: scale(0.95);
+    color: #ff1a1a;
+}
+
+nav ul li a:visited {
+    color: #8b0000;
+}
+
+nav ul li a:focus {
+    outline: 2px solid #ff8888;
+    border-radius: 4px;
 }
 
 a{text-decoration: none}
@@ -82,7 +110,7 @@ a:hover{color: lightblue;}
 
 .register-container button {
     width: 95%;
-    background-color: rgb(176, 49, 26);
+    background-color: rgb(255, 38, 0);
     color: white;
     padding: 10px;
     border: none;
