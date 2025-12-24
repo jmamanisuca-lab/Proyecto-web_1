@@ -6,6 +6,14 @@ botonesComprar.forEach(boton => {
     boton.addEventListener("click", function (e) {
         e.preventDefault();
 
+        const usuarioLogueado = localStorage.getItem("usuario");
+
+        if (!usuarioLogueado) {
+            alert("Debes iniciar sesión para agregar productos al carrito.");
+            window.location.href = "/iniciarSesion";
+            return;
+        }
+
         let producto = {
             nombre: this.dataset.nombre,
             precio: parseFloat(this.dataset.precio),
@@ -149,6 +157,16 @@ if (formRegistro) {
         };
         const confirmar = formData.get('confirmar');
 
+        if (datos.nombre_completo.length < 3) {
+            alert("El nombre es demasiado corto");
+            return;
+        }
+
+        if (datos.contrasenia.length < 6) {
+            alert("La contraseña debe tener al menos 6 caracteres");
+            return;
+        }
+
         if (datos.contrasenia !== confirmar) {
             alert('Las contraseñas no coinciden');
             return;
@@ -164,7 +182,7 @@ if (formRegistro) {
             const resultado = await response.json();
             
             if (resultado.success) {
-                alert('¡Registro exitoso en Railway!');
+                alert('¡Registro exitoso!');
                 window.location.href = '/iniciarSesion';
             } else {
                 alert('Error: ' + resultado.message);
@@ -216,3 +234,49 @@ if (formLogin) {
         }
     });
 }
+
+/* --- CONTROL DE SESIÓN EN EL HEADER --- */
+function verificarSesion() {
+    const botonLogin = document.getElementById('menuUsuario');
+    const datosUsuario = localStorage.getItem('usuario');
+
+    if (botonLogin && datosUsuario) {
+        const usuario = JSON.parse(datosUsuario);
+        
+        // Sacamos solo el primer nombre (por si puso nombre completo)
+        const primerNombre = usuario.nombre_completo.split(' ')[0];
+
+        // Cambiamos el texto y el color para que resalte que ya entró
+        botonLogin.innerHTML = `Hola, ${primerNombre} <span style="font-size: 0.8em;">(Salir)</span>`;
+        botonLogin.style.color = "#ffffffff"; // Un amarillo suave o el color que prefieras
+        botonLogin.href = "#"; // Quitamos el link al login
+
+        // Si hace clic en su nombre, cerramos la sesión
+        botonLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (confirm('¿Quieres cerrar tu sesión?')) {
+                localStorage.removeItem('usuario');
+                window.location.reload(); // Recarga para volver a mostrar "Iniciar Sesión"
+            }
+        });
+    }
+}
+
+// Llamamos a la función siempre que cargue la página
+document.addEventListener('DOMContentLoaded', verificarSesion);
+
+/* PROTECCIÓN DE LA PÁGINA DEL CARRITO (form.html) */
+function protegerCarrito() {
+    // Verificamos si la URL actual es la del carrito
+    if (window.location.pathname === "/form") {
+        const usuarioLogueado = localStorage.getItem("usuario");
+
+        if (!usuarioLogueado) {
+            alert("Acceso denegado. Debes iniciar sesión para ver tu carrito.");
+            window.location.href = "/iniciarSesion";
+        }
+    }
+}
+
+// Ejecutar apenas cargue cualquier página
+protegerCarrito();

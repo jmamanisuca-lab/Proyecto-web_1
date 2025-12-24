@@ -18,7 +18,7 @@
                 <li><a href="{{ url_for('presentacion') }}">Inicio</a></li>
                 <li><a href="{{ url_for('productos') }}">Productos</a></li>
                 <li><a href="{{ url_for('form') }}">Carrito</a></li>
-                <li><a href="{{ url_for('iniciarSesion') }}">Iniciar Sesión</a></li>
+                <li><a href="{{ url_for('iniciarSesion') }}" id="menuUsuario">Iniciar Sesión</a></li>
             </ul>
         </nav>
     </header>
@@ -34,7 +34,7 @@
 
                 <button type="submit">Registrarse</button>
             </form>
-            
+
                 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
                 
                 <p>¿Ya tienes una cuenta? </p><a href="{{ url_for('iniciarSesion') }}">Inicia sesión</a>
