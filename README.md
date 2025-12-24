@@ -19,11 +19,11 @@ SportZone Web es una plataforma de comercio electrónico enfocada en la venta de
 - **Backend:** Python (WSGI app)
 - **Base de datos:** MySQL
 
-## Estructura del Proyecto
-La organización del código sigue el estándar de aplicaciones Flask para asegurar escalabilidad y orden:
-
 ## Link de la documentación
 https://docs.google.com/document/d/1bfeNeTbuUILJjlnaSzk5K-1QCQN2h8vO8mIk6VxOpDQ/edit?tab=t.0
+
+## Estructura del Proyecto
+La organización del código sigue el estándar de aplicaciones Flask para asegurar escalabilidad y orden:
 
 ```text
 /
