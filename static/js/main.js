@@ -1,11 +1,47 @@
-/*AGREGAR PRODUCTOS AL CARRITO*/
+// CONTROL DE SESIÓN Y PROTECCIÓN
+document.addEventListener('DOMContentLoaded', () => {
+    verificarSesion();
+    protegerCarrito();
+});
 
+function verificarSesion() {
+    const botonLogin = document.getElementById('menuUsuario');
+    const datosUsuario = localStorage.getItem('usuario');
+
+    if (botonLogin && datosUsuario) {
+        const usuario = JSON.parse(datosUsuario);
+        const primerNombre = usuario.nombre_completo.split(' ')[0];
+
+        botonLogin.innerHTML = `Hola, ${primerNombre} <span style="font-size: 0.8em;">(Salir)</span>`;
+        botonLogin.style.color = "#ffffff";
+        botonLogin.href = "#";
+
+        botonLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (confirm('¿Quieres cerrar tu sesión?')) {
+                localStorage.removeItem('usuario');
+                window.location.reload();
+            }
+        });
+    }
+}
+
+function protegerCarrito() {
+    if (window.location.pathname === "/form") {
+        const usuarioLogueado = localStorage.getItem("usuario");
+        if (!usuarioLogueado) {
+            alert("Acceso denegado. Debes iniciar sesión para ver tu carrito.");
+            window.location.href = "/iniciarSesion";
+        }
+    }
+}
+
+// GESTIÓN DE PRODUCTOS Y CARRITO
 let botonesComprar = document.querySelectorAll(".btn-comprar");
 
 botonesComprar.forEach(boton => {
     boton.addEventListener("click", function (e) {
         e.preventDefault();
-
         const usuarioLogueado = localStorage.getItem("usuario");
 
         if (!usuarioLogueado) {
@@ -23,7 +59,6 @@ botonesComprar.forEach(boton => {
         };
 
         let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
         let productoExistente = carrito.find(item =>
             item.nombre === producto.nombre &&
             item.color === producto.color
@@ -36,15 +71,12 @@ botonesComprar.forEach(boton => {
         }
 
         localStorage.setItem("carrito", JSON.stringify(carrito));
-
         alert("Producto agregado al carrito");
-
         window.location.href = "/form";
     });
 });
 
-/*MOSTRAR CARRITO EN form.html*/
-
+// VISUALIZACIÓN EN FORM.HTML
 let contenedorCarrito = document.getElementById("lista-carrito");
 let resumenCompra = document.getElementById("resumen");
 
@@ -55,11 +87,8 @@ if (contenedorCarrito) {
     if (carrito.length === 0) {
         contenedorCarrito.innerHTML = "<p>El carrito está vacío</p>";
     } else {
-        alert("Carrito cargado con " + carrito.length + " producto(s)");
-
         carrito.forEach(producto => {
             total += producto.precio * producto.cantidad;
-
             contenedorCarrito.innerHTML += `
                 <article>
                     <h3>${producto.nombre}</h3>
@@ -79,8 +108,7 @@ if (contenedorCarrito) {
     }
 }
 
-/*CONFIRMAR / CANCELAR COMPRA*/
-
+// BOTONES DE ACCIÓN FINAL
 let btnConfirmar = document.getElementById("confirmar");
 let btnCancelar = document.getElementById("cancelar");
 
@@ -95,17 +123,17 @@ if (btnConfirmar) {
 
 if (btnCancelar) {
     btnCancelar.addEventListener("click", () => {
-        alert("Compra cancelada");
-        localStorage.removeItem("carrito");
-        location.reload();
+        if (confirm("¿Deseas cancelar la compra y vaciar el carrito?")) {
+            localStorage.removeItem("carrito");
+            location.reload();
+        }
     });
 }
 
-/*CAMBIO DE COLOR DEL PRODUCTO*/
+// INTERACCIONES DE PRODUCTO
+let productosUI = document.querySelectorAll(".producto");
 
-let productos = document.querySelectorAll(".producto");
-
-productos.forEach(producto => {
+productosUI.forEach(producto => {
     let imagen = producto.querySelector(".img-producto");
     let colores = producto.querySelectorAll(".color");
     let boton = producto.querySelector(".btn-comprar");
@@ -114,41 +142,36 @@ productos.forEach(producto => {
         color.addEventListener("click", () => {
             let nuevaImagen = color.dataset.imagen;
             let nombreColor = color.dataset.color;
-
             imagen.src = nuevaImagen;
-
             boton.dataset.color = nombreColor;
             boton.dataset.imagen = nuevaImagen;
         });
     });
 });
 
-/*FILTRO POR CATEGORÍA*/
+// FILTROS
 const selectCategoria = document.getElementById("categoria");
 const secciones = document.querySelectorAll(".categoria-section");
 
 if (selectCategoria) {
     selectCategoria.addEventListener("change", () => {
         const categoria = selectCategoria.value;
-
         secciones.forEach(section => {
             if (categoria === "all") {
                 section.style.display = "block";
             } else {
-                section.style.display =
-                    section.dataset.categoria === categoria ? "block" : "none";
+                section.style.display = section.dataset.categoria === categoria ? "block" : "none";
             }
         });
     });
 }
+
+// REGISTRO DE USUARIOS
 const formRegistro = document.getElementById('formRegistro');
 
 if (formRegistro) {
-    console.log("Formulario de registro detectado"); // Esto te confirmará en consola que el JS cargó
-
     formRegistro.addEventListener('submit', async function(e) {
-        e.preventDefault(); // Evita que la página se recargue sola
-        
+        e.preventDefault();
         const formData = new FormData(formRegistro);
         const datos = {
             nombre_completo: formData.get('nombre_completo'),
@@ -157,13 +180,8 @@ if (formRegistro) {
         };
         const confirmar = formData.get('confirmar');
 
-        if (datos.nombre_completo.length < 3) {
-            alert("El nombre es demasiado corto");
-            return;
-        }
-
-        if (datos.contrasenia.length < 6) {
-            alert("La contraseña debe tener al menos 6 caracteres");
+        if (datos.nombre_completo.length < 3 || datos.contrasenia.length < 6) {
+            alert("Verifique que el nombre tenga 3 caracteres y la clave 6.");
             return;
         }
 
@@ -178,9 +196,7 @@ if (formRegistro) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datos)
             });
-            
             const resultado = await response.json();
-            
             if (resultado.success) {
                 alert('¡Registro exitoso!');
                 window.location.href = '/iniciarSesion';
@@ -188,19 +204,17 @@ if (formRegistro) {
                 alert('Error: ' + resultado.message);
             }
         } catch (error) {
-            console.error("Error detallado:", error);
-            alert('No se pudo conectar con el servidor.');
+            alert('Error de conexión');
         }
     });
 }
 
-/* --- LOGIN --- */
+// LOGIN DE USUARIOS
 const formLogin = document.getElementById('formLogin');
 
 if (formLogin) {
     formLogin.addEventListener('submit', async function(e) {
-        e.preventDefault(); // Evita que la página se recargue
-        
+        e.preventDefault();
         const formData = new FormData(formLogin);
         const datos = {
             correo: formData.get('correo'),
@@ -208,75 +222,21 @@ if (formLogin) {
         };
 
         try {
-            // Enviamos los datos a la ruta que configuramos en app.py
             const response = await fetch('/api/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datos)
             });
-
             const resultado = await response.json();
-
             if (resultado.success) {
-                // Guardamos los datos del usuario (Juan) en el navegador
                 localStorage.setItem('usuario', JSON.stringify(resultado.user));
-                
-                alert('¡Bienvenido de nuevo, ' + resultado.user.nombre_completo + '!');
-                
-                // Redirigir a la página principal (presentacion)
+                alert('¡Bienvenido, ' + resultado.user.nombre_completo + '!');
                 window.location.href = '/'; 
             } else {
-                alert('Error: ' + resultado.message);
+                alert('Credenciales incorrectas');
             }
         } catch (error) {
-            console.error("Error en login:", error);
-            alert('No se pudo conectar con el servidor.');
+            alert('Error de conexión');
         }
     });
 }
-
-/* --- CONTROL DE SESIÓN EN EL HEADER --- */
-function verificarSesion() {
-    const botonLogin = document.getElementById('menuUsuario');
-    const datosUsuario = localStorage.getItem('usuario');
-
-    if (botonLogin && datosUsuario) {
-        const usuario = JSON.parse(datosUsuario);
-        
-        // Sacamos solo el primer nombre (por si puso nombre completo)
-        const primerNombre = usuario.nombre_completo.split(' ')[0];
-
-        // Cambiamos el texto y el color para que resalte que ya entró
-        botonLogin.innerHTML = `Hola, ${primerNombre} <span style="font-size: 0.8em;">(Salir)</span>`;
-        botonLogin.style.color = "#ffffffff"; // Un amarillo suave o el color que prefieras
-        botonLogin.href = "#"; // Quitamos el link al login
-
-        // Si hace clic en su nombre, cerramos la sesión
-        botonLogin.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (confirm('¿Quieres cerrar tu sesión?')) {
-                localStorage.removeItem('usuario');
-                window.location.reload(); // Recarga para volver a mostrar "Iniciar Sesión"
-            }
-        });
-    }
-}
-
-// Llamamos a la función siempre que cargue la página
-document.addEventListener('DOMContentLoaded', verificarSesion);
-
-/* PROTECCIÓN DE LA PÁGINA DEL CARRITO (form.html) */
-function protegerCarrito() {
-    // Verificamos si la URL actual es la del carrito
-    if (window.location.pathname === "/form") {
-        const usuarioLogueado = localStorage.getItem("usuario");
-
-        if (!usuarioLogueado) {
-            alert("Acceso denegado. Debes iniciar sesión para ver tu carrito.");
-            window.location.href = "/iniciarSesion";
-        }
-    }
-}
-
-// Ejecutar apenas cargue cualquier página
-protegerCarrito();
