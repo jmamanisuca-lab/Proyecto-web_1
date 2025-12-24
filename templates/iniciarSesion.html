@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="{{ url_for('presentacion') }}">
+                    <img src="{{ url_for('static', filename='images/images_static/Logo.png') }}" alt="Logo Tienda" class="logo-img">
+                </a>
+            </div>
+            <ul>
+                <li><a href="{{ url_for('presentacion') }}">Inicio</a></li>
+                <li><a href="{{ url_for('productos') }}">Productos</a></li>
+                <li><a href="{{ url_for('form') }}">Carrito</a></li>
+                <li><a href="{{ url_for('iniciarSesion') }}">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="login-container">
+            <h2>Iniciar Sesión</h2>
+            <form id="formLogin">
+                <input type="email" name="correo" placeholder="Correo" required>
+                <input type="password" name="contrasenia" placeholder="Contraseña" required>
+                
+                <button type="submit">Ingresar</button>
+                
+                <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+            </form>
+
+            <a href="#">¿Olvidaste tu contraseña?</a>
+            <a href="{{ url_for('registro') }}">Crear una cuenta</a>
+        </div>
+    </main>
+    
+    <footer> 
+        <h3>SportZone los mejores en calidad</h3>       
+        <ul>
+            <li>
+                <a href="{{ url_for('info') }}#contacto">Contáctenos</a>
+            </li>
+            <li>
+                <a href="{{ url_for('info') }}#politicas">Políticas SportZone</a>
+            </li>
+        </ul>
+        <p>&copy;2025 SportZone tienda de artículos deportivos</p>
+        <address>Contacto : sportzona@gmail.com</address>
+    </footer>
+</body>
+</html>

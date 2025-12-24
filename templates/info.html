@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Información | SportZone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/images_static/Logo.png') }}" class="logo-img" alt="SportZone">
+            </a>
+        </div>
+
+        <ul>
+            <li><a href="{{ url_for('index') }}">Inicio</a></li>
+            <li><a href="{{ url_for('productos') }}">Productos</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="pagina-info">
+
+    <section id="contacto" class="bloque-info">
+        <h2>Contacto</h2>
+
+        <p>
+            Si tienes consultas sobre productos, envíos o pedidos,
+            puedes comunicarte con nosotros por los siguientes medios:
+        </p>
+
+        <p class="dato">sportzona@gmail.com</p>
+        <p class="dato">+51 999 999 999</p>
+        <p>Lunes a Viernes de 8:00 a.m. a 5:00 p.m.</p>
+
+        <a href="{{ url_for('productos') }}">← Volver a productos</a>
+    </section>
+
+    <section id="politicas" class="bloque-info">
+        <h2>Políticas SportZone</h2>
+
+        <p>
+            En SportZone trabajamos para brindar productos de calidad
+            y una experiencia segura a nuestros clientes.
+        </p>
+
+        <ul>
+            <li>Cambios y devoluciones dentro de 7 días</li>
+            <li>Protección de datos personales</li>
+            <li>Envíos a nivel nacional</li>
+        </ul>
+
+        <a href="{{ url_for('index') }}">← Volver al inicio</a>
+    </section>
+
+</main>
+
+<footer>
+    <h3>SportZone los mejores en calidad</h3>
+    <p>&copy;2025 SportZone tienda de artículos deportivos</p>
+</footer>
+
+</body>
+</html>

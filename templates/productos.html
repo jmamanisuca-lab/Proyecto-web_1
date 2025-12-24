@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    <title>Productos</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="{{ url_for('presentacion') }}">
+                    <img src="{{ url_for('static', filename='images/images_static/Logo.png') }}" alt="Logo Tienda" class="logo-img">
+                </a>
+            </div>
+            <ul>
+                <li><a href="{{ url_for('presentacion') }}">Inicio</a></li>
+                <li><a href="{{ url_for('productos') }}">Productos</a></li>
+                <li><a href="{{ url_for('form') }}">Carrito</a></li>
+                <li><a href="{{ url_for('iniciarSesion') }}">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main>
+    <h1>Productos Disponibles</h1>
+
+    <div class="filtro-categoria">
+        <label for="categoria">Filtrar por categoría:</label>
+        <select id="categoria">
+            <option value="all">Todas</option>
+            <option value="zapatillas">Zapatillas</option>
+            <option value="camisetas">Camisetas</option>
+            <option value="shorts">Shorts y Pantalones</option>
+            <option value="balones">Balones</option>
+            <option value="gorras">Gorras y Sombreros</option>
+            <option value="futbol">Fútbol</option>
+        </select>
+    </div>
+
+    <section class="categoria-section" data-categoria="zapatillas">
+        <h2 class="categoria-titulo">Zapatillas</h2>
+        <div class="productos-grid">
+            <article class="producto">
+                <figure>
+                    <img class="img-producto"
+                        src="{{ url_for('static', filename='images/images_productos/Zapatillas Adidas negro.webp') }}"
+                        alt="Zapatillas Deportivas Adidas Para Hombre Azul">
+                </figure>
+
+                <h3>Zapatillas Deportivas Adidas Para Hombre Id8329 Azul</h3>
+
+                <p class="precio" data-precio="149.99">
+                    S/149.99 <span class="antes">Antes: S/179.99</span>
+                </p>
+
+                <div class="colores">
+                     <span class="color negro"
+                        data-color="Negro"
+                        data-imagen="{{ url_for('static', filename='images/images_productos/Zapatillas Adidas negro.webp') }}"></span>
+
+                    <span class="color gris"
+                        data-color="Gris"
+                        data-imagen="{{ url_for('static', filename='images/images_productos/Zapatillas Adidas gris.webp') }}"></span>
+                </div>
+
+                <a href="{{ url_for('form') }}"
+                class="btn-comprar"
+                data-nombre="Zapatillas Deportivas Adidas Para Hombre negro"
+                data-precio="149.99"
+                data-imagen="{{ url_for('static', filename='images/images_productos/Zapatillas Adidas negro.webp') }}"
+                data-color="Azul">
+                Agregar al carrito
+                </a>
+            </article>
+
+            <article class="producto">
+                <figure>
+                    <img class="img-producto" 
+                        src="{{ url_for('static', filename='images/images_productos/Zapatilla Real Talent Blanco 091.jpg') }}" 
+                        alt="Zapatilla Real Talent Blanco 091">
+                </figure>
+
+                <h3>Zapatilla Real Talent Blanco 091</h3>
+
+                <p class="precio" data-precio="169.99">
+                    S/169.99 <span class="antes">Antes: S/199.99</span>
+                </p>
+
+                <div class="colores">
+                    <span class="color blanco" 
+                        data-color="Blanco" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/Zapatilla Real Talent Blanco 091.jpg') }}"></span>
+                    
+                    <span class="color azul" 
+                        data-color="Azul" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/Zapatilla Real Talent Blanco 091_a.jpg') }}"></span>
+                </div>
+
+                <a href="{{ url_for('form') }}" 
+                class="btn-comprar" 
+                data-nombre="Zapatilla Real Talent Blanco 091" 
+                data-precio="169.99" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/Zapatilla Real Talent Blanco 091.jpg') }}" 
+                data-color="Blanco">
+                Agregar al carrito
+                </a>
+            </article>
+
+           <article class="producto">
+                <figure>
+                    <img class="img-producto" 
+                        src="{{ url_for('static', filename='images/images_productos/airRuning.webp') }}" 
+                        alt="Zapatillas Nike Running Air Zoom">
+                </figure>
+
+                <h3>Zapatillas Nike Running Air Zoom</h3>
+
+                <p class="precio" data-precio="189.99">
+                    S/189.99 <span class="antes">Antes: S/229.99</span>
+                </p>
+
+                <div class="colores">
+                    <span class="color negro" 
+                        data-color="Negro" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/airRuning.webp') }}"></span>
+                    
+                    <span class="color celeste" 
+                        data-color="Celeste" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/airRuning_a.webp') }}"></span>
+                </div>
+
+                <a href="{{ url_for('form') }}" 
+                class="btn-comprar" 
+                data-nombre="Zapatillas Nike Running Air Zoom" 
+                data-precio="189.99" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/airRuning.webp') }}" 
+                data-color="Negro">
+                Agregar al carrito
+                </a>
+            </article>
+
+            <article class="producto">
+                <figure>
+                    <img class="img-producto" 
+                        src="{{ url_for('static', filename='images/images_productos/pumaVelocity.avif') }}" 
+                        alt="Zapatillas Puma Velocity">
+                </figure>
+
+                <h3>Zapatillas Puma Velocity Nitro</h3>
+
+                <p class="precio" data-precio="159.99">
+                    S/159.99
+                </p>
+
+                <div class="colores">
+                    <span class="color negro" 
+                        data-color="Negro" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/pumaVelocity.avif') }}"></span>
+                    
+                    <span class="color amarillo" 
+                        data-color="Amarillo" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/pumaVelocity_a.avif') }}"></span>
+                </div>
+
+                <a href="{{ url_for('form') }}" 
+                class="btn-comprar" 
+                data-nombre="Zapatillas Puma Velocity Nitro" 
+                data-precio="159.99" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/pumaVelocity.avif') }}" 
+                data-color="Negro">
+                Agregar al carrito
+                </a>
+            </article>
+        </div>
+    </section>
+
+    <section class="categoria-section" data-categoria="camisetas">
+        <h2 class="categoria-titulo">Camisetas</h2>
+        <div class="productos-grid">
+            <article class="producto">
+                <figure>
+                    <img class="img-producto" 
+                        src="{{ url_for('static', filename='images/images_productos/Polo deportivo I-run HSD3824.jpg') }}" 
+                        alt="Polo Deportivo Motivate I-Run para Hombre Negro">
+                </figure>
+
+                <h3>Polo Deportivo Motivate I-Run para Hombre Negro</h3>
+
+                <p class="precio" data-precio="79.90">
+                    S/79.90
+                </p>
+
+                <div class="colores">
+                    <span class="color negro" 
+                        data-color="Negro" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/Polo deportivo I-run HSD3824.jpg') }}"></span>
+                    
+                    <span class="color gris" 
+                        data-color="Gris" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/Polo deportivo I-run HSD3824_a.jpg') }}"></span>
+                </div>
+
+                <a href="{{ url_for('form') }}" 
+                class="btn-comprar" 
+                data-nombre="Polo Deportivo Motivate I-Run para Hombre Negro" 
+                data-precio="79.90" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/Polo deportivo I-run HSD3824.jpg') }}" 
+                data-color="Negro">
+                Agregar al carrito
+                </a>
+            </article>
+
+           <article class="producto">
+                <figure>
+                    <img class="img-producto" 
+                        src="{{ url_for('static', filename='images/images_productos/Camiseta Arquero M.jpg') }}" 
+                        alt="Camiseta Arquero Manga Larga Pro-One Stripe Verde">
+                </figure>
+
+                <h3>Camiseta Arquero M/Larga Pro-One Stripe Verde</h3>
+
+                <p class="precio" data-precio="69.00">
+                    S/69.00
+                </p>
+
+                <div class="colores">
+                    <span class="color verde" 
+                        data-color="Verde" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/Camiseta Arquero M.jpg') }}"></span>
+                </div>
+
+                <a href="{{ url_for('form') }}" 
+                class="btn-comprar" 
+                data-nombre="Camiseta Arquero M/Larga Pro-One Stripe Verde" 
+                data-precio="69.00" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/Camiseta Arquero M.jpg') }}" 
+                data-color="Verde">
+                Agregar al carrito
+                </a>
+            </article>
+
+            <article class="producto">
+                <figure>
+                    <img class="img-producto" 
+                        src="{{ url_for('static', filename='images/images_productos/Camiseta Macron Canopus.webp') }}" 
+                        alt="Camiseta deportiva Macron Canopus">
+                </figure>
+
+                <h3>Camiseta deportiva Macron Canopus</h3>
+
+                <p class="precio" data-precio="75.00">
+                    S/75.00
+                </p>
+
+                <div class="colores">
+                    <span class="color blanco" 
+                        data-color="Blanco" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/Camiseta Macron Canopus.webp') }}"></span>
+                </div>
+
+                <a href="{{ url_for('form') }}" 
+                class="btn-comprar" 
+                data-nombre="Camiseta deportiva Macron Canopus" 
+                data-precio="75.00" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/Camiseta Macron Canopus.webp') }}" 
+                data-color="Blanco">
+                Agregar al carrito
+                </a>
+            </article>
+
+            <article class="producto">
+                <figure>
+                    <img class="img-producto" 
+                        src="{{ url_for('static', filename='images/images_productos/underArmor.webp') }}" 
+                        alt="Polo Under Armour Tech">
+                </figure>
+
+                <h3>Polo Under Armour Tech 2.0</h3>
+
+                <p class="precio" data-precio="89.90">
+                    S/89.90 <span class="antes">Antes: S/109.90</span>
+                </p>
+
+                <div class="colores">
+                    <span class="color negro" 
+                        data-color="Negro" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/underArmor.webp') }}"></span>
+                    
+                    <span class="color azul" 
+                        data-color="Azul" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/underArmor_a.webp') }}"></span>
+                </div>
+
+                <a href="{{ url_for('form') }}" 
+                class="btn-comprar" 
+                data-nombre="Polo Under Armour Tech 2.0" 
+                data-precio="89.90" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/underArmor.webp') }}" 
+                data-color="Negro">
+                Agregar al carrito
+                </a>
+            </article>
+
+            <article class="producto">
+                <figure>
+                    <img class="img-producto" 
+                        src="{{ url_for('static', filename='images/images_productos/nikeDriFit.webp') }}" 
+                        alt="Camiseta Nike Dri-FIT">
+                </figure>
+
+                <h3>Camiseta Nike Dri-FIT Training</h3>
+
+                <p class="precio" data-precio="79.99">
+                    S/79.99
+                </p>
+
+                <div class="colores">
+                    <span class="color azul" 
+                        data-color="Azul" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/nikeDriFit.webp') }}"></span>
+                    
+                    <span class="color blanco" 
+                        data-color="Blanco" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/nikeDriFit_a.webp') }}"></span>
+                        
+                    <span class="color verde" 
+                        data-color="Verde" 
+                        data-imagen="{{ url_for('static', filename='images/images_productos/nikeDriFit_b.webp') }}"></span>
+                </div>
+
+                <a href="{{ url_for('form') }}" 
+                class="btn-comprar" 
+                data-nombre="Camiseta Nike Dri-FIT Training" 
+                data-precio="79.99" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/nikeDriFit.webp') }}" 
+                data-color="Azul">
+                Agregar al carrito
+                </a>
+            </article>
+        </div>
+    </section>
+
+    <section class="categoria-section" data-categoria="shorts">
+    <h2 class="categoria-titulo">Shorts y Pantalones Deportivos</h2>
+    <div class="productos-grid">
+
+        <article class="producto">
+            <figure>
+                <img class="img-producto" 
+                    src="{{ url_for('static', filename='images/images_productos/nikeDriFitShort.jpg') }}" 
+                    alt="Short Nike Dri-FIT">
+            </figure>
+
+            <h3>Short Nike Dri-FIT Training</h3>
+
+            <p class="precio" data-precio="59.99">
+                S/59.99 <span class="antes">Antes: S/79.99</span>
+            </p>
+
+            <div class="colores">
+                <span class="color negro" 
+                    data-color="Negro" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/nikeDriFitShort.jpg') }}"></span>
+                
+                <span class="color gris" 
+                    data-color="Gris" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/nikeDriFitShort_a.jpg') }}"></span>
+            </div>
+
+            <a href="{{ url_for('form') }}" 
+            class="btn-comprar" 
+            data-nombre="Short Nike Dri-FIT Training" 
+            data-precio="59.99" 
+            data-imagen="{{ url_for('static', filename='images/images_productos/nikeDriFitShort.jpg') }}" 
+            data-color="Negro">
+            Agregar al carrito
+            </a>
+        </article>
+
+        <article class="producto">
+            <figure>
+                <img class="img-producto" 
+                    src="{{ url_for('static', filename='images/images_productos/shortsRunners.avif') }}" 
+                    alt="Short Adidas Running">
+            </figure>
+
+            <h3>Short Adidas Running Climacool</h3>
+
+            <p class="precio" data-precio="54.99">
+                S/54.99
+            </p>
+
+            <div class="colores">
+                <span class="color celeste" 
+                    data-color="Celeste" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/shortsRunners.avif') }}"></span>
+                
+                <span class="color verde" 
+                    data-color="Verde" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/shortsRunners_a.avif') }}"></span>
+            </div>
+
+            <a href="{{ url_for('form') }}" 
+            class="btn-comprar" 
+            data-nombre="Short Adidas Running Climacool" 
+            data-precio="54.99" 
+            data-imagen="{{ url_for('static', filename='images/images_productos/shortsRunners.avif') }}" 
+            data-color="Celeste">
+            Agregar al carrito
+            </a>
+        </article>
+
+        <article class="producto">
+            <figure>
+                <img class="img-producto" 
+                    src="{{ url_for('static', filename='images/images_productos/pantalonBuzoDeportivo.jpg') }}" 
+                    alt="Pantalón Deportivo Puma">
+            </figure>
+
+            <h3>Pantalón Deportivo Puma Essential</h3>
+
+            <p class="precio" data-precio="89.99">
+                S/89.99 <span class="antes">Antes: S/119.99</span>
+            </p>
+
+            <div class="colores">
+                <span class="color negro" 
+                    data-color="Negro" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/pantalonBuzoDeportivo.jpg') }}"></span>
+                
+                <span class="color gris" 
+                    data-color="Gris" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/pantalonBuzoDeportivo_a.jpg') }}"></span>
+            </div>
+
+            <a href="{{ url_for('form') }}" 
+            class="btn-comprar" 
+            data-nombre="Pantalón Deportivo Puma Essential" 
+            data-precio="89.99" 
+            data-imagen="{{ url_for('static', filename='images/images_productos/pantalonBuzoDeportivo.jpg') }}" 
+            data-color="Negro">
+            Agregar al carrito
+            </a>
+        </article>
+
+        <article class="producto">
+            <figure>
+                <img class="img-producto" 
+                    src="{{ url_for('static', filename='images/images_productos/pantalonDeportivo.webp') }}" 
+                    alt="Pantalón Jogger Under Armour">
+            </figure>
+
+            <h3>Pantalón Jogger Under Armour Sportstyle</h3>
+
+            <p class="precio" data-precio="99.99">
+                S/99.99
+            </p>
+
+            <div class="colores">
+                <span class="color gris" 
+                    data-color="Gris" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/pantalonDeportivo.webp') }}"></span>
+                
+                <span class="color negro" 
+                    data-color="Negro" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/pantalonDeportivo_a.webp') }}"></span>
+                    
+                <span class="color azul" 
+                    data-color="Azul" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/pantalonDeportivo_b.webp') }}"></span>
+            </div>
+
+            <a href="{{ url_for('form') }}" 
+            class="btn-comprar" 
+            data-nombre="Pantalón Jogger Under Armour Sportstyle" 
+            data-precio="99.99" 
+            data-imagen="{{ url_for('static', filename='images/images_productos/pantalonDeportivo.webp') }}" 
+            data-color="Gris">
+            Agregar al carrito
+            </a>
+        </article>
+    </div>
+</section>
+
+<section class="categoria-section" data-categoria="balones">
+    <h2 class="categoria-titulo">Balones</h2>
+    <div class="productos-grid">
+        
+        <article class="producto">
+            <figure>
+                <img class="img-producto" 
+                    src="{{ url_for('static', filename='images/images_productos/balonLigaUCL.avif') }}" 
+                    alt="Balón de Fútbol Adidas">
+            </figure>
+
+            <h3>Balón de Fútbol Adidas UCL Pro</h3>
+
+            <p class="precio" data-precio="89.99">
+                S/89.99
+            </p>
+
+            <div class="colores">
+                <span class="color blanco" 
+                    data-color="Blanco" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/balonLigaUCL.avif') }}"></span>
+            </div>
+
+            <a href="{{ url_for('form') }}" 
+            class="btn-comprar" 
+            data-nombre="Balón de Fútbol Adidas UCL Pro" 
+            data-precio="89.99" 
+            data-imagen="{{ url_for('static', filename='images/images_productos/balonLigaUCL.avif') }}" 
+            data-color="Blanco">
+            Agregar al carrito
+            </a>
+        </article>
+
+        <article class="producto">
+            <figure>
+                <img class="img-producto" 
+                    src="{{ url_for('static', filename='images/images_productos/balonBasket.jpg') }}" 
+                    alt="Balón de Básquet Spalding">
+            </figure>
+
+            <h3>Balón de Básquet Spalding NBA Official</h3>
+
+            <p class="precio" data-precio="119.99">
+                S/119.99 <span class="antes">Antes: S/149.99</span>
+            </p>
+
+            <div class="colores">
+                <span class="color naranja" 
+                    data-color="Naranja" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/balonBasket.jpg') }}"></span>
+            </div>
+
+            <a href="{{ url_for('form') }}" 
+            class="btn-comprar" 
+            data-nombre="Balón de Básquet Spalding NBA Official" 
+            data-precio="119.99" 
+            data-imagen="{{ url_for('static', filename='images/images_productos/balonBasket.jpg') }}" 
+            data-color="Naranja">
+            Agregar al carrito
+            </a>
+        </article>
+
+        <article class="producto">
+            <figure>
+                <img class="img-producto" 
+                    src="{{ url_for('static', filename='images/images_productos/balonVoley.webp') }}" 
+                    alt="Balón de Vóley Mikasa">
+            </figure>
+
+            <h3>Balón de Vóley Mikasa MVA200</h3>
+
+            <p class="precio" data-precio="79.99">
+                S/79.99
+            </p>
+
+            <div class="colores">
+                <span class="color amarillo" 
+                    data-color="Amarillo" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/balonVoley.webp') }}"></span>
+                
+                <span class="color azul" 
+                    data-color="Azul" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/balonVoley_a.webp') }}"></span>
+            </div>
+
+            <a href="{{ url_for('form') }}" 
+            class="btn-comprar" 
+            data-nombre="Balón de Vóley Mikasa MVA200" 
+            data-precio="79.99" 
+            data-imagen="{{ url_for('static', filename='images/images_productos/balonVoley.webp') }}" 
+            data-color="Amarillo">
+            Agregar al carrito
+            </a>
+        </article>
+
+        <article class="producto">
+            <figure>
+                <img class="img-producto" 
+                    src="{{ url_for('static', filename='images/images_productos/nikeMaestro.webp') }}" 
+                    alt="Balón de Futsal">
+            </figure>
+
+            <h3>Balón de Futsal Nike Maestro</h3>
+
+            <p class="precio" data-precio="69.99">
+                S/69.99 <span class="antes">Antes: S/89.99</span>
+            </p>
+
+            <div class="colores">
+                <span class="color blanco" 
+                    data-color="Blanco" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/nikeMaestro.webp') }}"></span>
+            </div>
+
+            <a href="{{ url_for('form') }}" 
+            class="btn-comprar" 
+            data-nombre="Balón de Futsal Nike Maestro" 
+            data-precio="69.99" 
+            data-imagen="{{ url_for('static', filename='images/images_productos/nikeMaestro.webp') }}" 
+            data-color="Blanco">
+            Agregar al carrito
+            </a>
+        </article>
+    </div>
+</section>
+
+<section class="categoria-section" data-categoria="gorras">
+    <h2 class="categoria-titulo">Gorras y Sombreros</h2>
+    <div class="productos-grid">
+        
+        <article class="producto">
+            <figure>
+                <img class="img-producto" 
+                    src="{{ url_for('static', filename='images/images_productos/gorraNikeDriFit.webp') }}" 
+                    alt="Gorra Nike Dri-FIT">
+            </figure>
+
+            <h3>Gorra Nike Dri-FIT Running</h3>
+
+            <p class="precio" data-precio="39.99">
+                S/39.99
+            </p>
+
+            <div class="colores">
+                <span class="color negro" 
+                    data-color="Negro" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/gorraNikeDriFit.webp') }}"></span>
+                
+                <span class="color blanco" 
+                    data-color="Blanco" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/gorraNikeDriFit_a.webp') }}"></span>
+            </div>
+
+            <a href="{{ url_for('form') }}" 
+            class="btn-comprar" 
+            data-nombre="Gorra Nike Dri-FIT Running" 
+            data-precio="39.99" 
+            data-imagen="{{ url_for('static', filename='images/images_productos/gorraNikeDriFit.webp') }}" 
+            data-color="Negro">
+            Agregar al carrito
+            </a>
+        </article>
+
+        <article class="producto">
+            <figure>
+                <img class="img-producto" 
+                    src="{{ url_for('static', filename='images/images_productos/gorraBeisbol.avif') }}" 
+                    alt="Gorra Adidas Baseball">
+            </figure>
+
+            <h3>Gorra Adidas Baseball Cap</h3>
+
+            <p class="precio" data-precio="44.99">
+                S/44.99 <span class="antes">Antes: S/59.99</span>
+            </p>
+
+            <div class="colores">
+                <span class="color azul" 
+                    data-color="Azul" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/gorraBeisbol.avif') }}"></span>
+                
+                <span class="color negro" 
+                    data-color="Negro" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/gorraBeisbol_a.avif') }}"></span>
+            </div>
+
+            <a href="{{ url_for('form') }}" 
+            class="btn-comprar" 
+            data-nombre="Gorra Adidas Baseball Cap" 
+            data-precio="44.99" 
+            data-imagen="{{ url_for('static', filename='images/images_productos/gorraBeisbol.avif') }}" 
+            data-color="Azul">
+            Agregar al carrito
+            </a>
+        </article>
+
+        <article class="producto">
+            <figure>
+                <img class="img-producto" 
+                    src="{{ url_for('static', filename='images/images_productos/gorraDeportivaUnderArmor.jpg') }}" 
+                    alt="Sombrero deportivo">
+            </figure>
+
+            <h3>Sombrero Deportivo Under Armour Bucket</h3>
+
+            <p class="precio" data-precio="49.99">
+                S/49.99
+            </p>
+
+            <div class="colores">
+                <span class="color negro" 
+                    data-color="Negro" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/gorraDeportivaUnderArmor.jpg') }}"></span>
+                
+                <span class="color gris" 
+                    data-color="Gris" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/gorraDeportivaUnderArmor_a.jpg') }}"></span>
+            </div>
+
+            <a href="{{ url_for('form') }}" 
+            class="btn-comprar" 
+            data-nombre="Sombrero Deportivo Under Armour Bucket" 
+            data-precio="49.99" 
+            data-imagen="{{ url_for('static', filename='images/images_productos/gorraDeportivaUnderArmor.jpg') }}" 
+            data-color="Negro">
+            Agregar al carrito
+            </a>
+        </article>
+
+        <article class="producto">
+            <figure>
+                <img class="img-producto" 
+                    src="{{ url_for('static', filename='images/images_productos/viseraPuma.webp') }}" 
+                    alt="Visera deportiva">
+            </figure>
+
+            <h3>Visera Deportiva Puma Running</h3>
+
+            <p class="precio" data-precio="34.99">
+                S/34.99
+            </p>
+
+            <div class="colores">
+                <span class="color blanco" 
+                    data-color="Blanco" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/viseraPuma.webp') }}"></span>
+                
+                <span class="color rosa" 
+                    data-color="Rosa" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/viseraPuma_a.webp') }}"></span>
+            </div>
+
+            <a href="{{ url_for('form') }}" 
+            class="btn-comprar" 
+            data-nombre="Visera Deportiva Puma Running" 
+            data-precio="34.99" 
+            data-imagen="{{ url_for('static', filename='images/images_productos/viseraPuma.webp') }}" 
+            data-color="Blanco">
+            Agregar al carrito
+            </a>
+        </article>
+    </div>
+</section>
+
+<section class="categoria-section" data-categoria="futbol">
+    <h2 class="categoria-titulo">Calzado y Accesorios de Fútbol</h2>
+    <div class="productos-grid">
+
+        <article class="producto">
+            <figure>
+                <img class="img-producto" 
+                    src="{{ url_for('static', filename='images/images_productos/Zapato de Futbol Adulto Soccer SP3 FG Negro-Fucsia.png') }}" 
+                    alt="Zapato de Futbol Adulto Soccer SP3 FG Negro-Fucsia">
+            </figure>
+
+            <h3>Zapato de Futbol Adulto Soccer SP3 FG</h3>
+
+            <p class="precio" data-precio="119.99">
+                S/119.99 <span class="antes">Antes: S/159.99</span>
+            </p>
+
+            <div class="colores">
+                <span class="color negro" 
+                    data-color="Negro" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/Zapato de Futbol Adulto Soccer SP3 FG Negro-Fucsia.png') }}"></span>
+                
+                <span class="color fucsia" 
+                    data-color="Fucsia" 
+                    data-imagen="{{ url_for('static', filename='images/images_productos/Zapato de Futbol Adulto Soccer SP3 FG Negro-Fucsia_a.png') }}"></span>
+            </div>
+
+            <a href="{{ url_for('form') }}" 
+            class="btn-comprar" 
+            data-nombre="Zapato de Futbol Adulto Soccer SP3 FG" 
+            data-precio="119.99" 
+            data-imagen="{{ url_for('static', filename='images/images_productos/Zapato de Futbol Adulto Soccer SP3 FG Negro-Fucsia.png') }}" 
+            data-color="Negro">
+            Agregar al carrito
+            </a>
+        </article>
+
+        <article class="producto">
+        <figure>
+            <img class="img-producto" 
+                src="{{ url_for('static', filename='images/images_productos/mercurialVapor.webp') }}" 
+                alt="Zapatos Nike Mercurial Vapor">
+        </figure>
+
+        <h3>Zapatos Nike Mercurial Vapor 15</h3>
+
+        <p class="precio" data-precio="249.99">
+            S/249.99 <span class="antes">Antes: S/299.99</span>
+        </p>
+
+        <div class="colores">
+            <span class="color gris" 
+                data-color="Gris" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/mercurialVapor.webp') }}"></span>
+            
+            <span class="color negro" 
+                data-color="Negro" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/mercurialVapor_a.webp') }}"></span>
+        </div>
+
+        <a href="{{ url_for('form') }}" 
+        class="btn-comprar" 
+        data-nombre="Zapatos Nike Mercurial Vapor 15" 
+        data-precio="249.99" 
+        data-imagen="{{ url_for('static', filename='images/images_productos/mercurialVapor.webp') }}" 
+        data-color="Gris">
+        Agregar al carrito
+        </a>
+    </article>
+
+    <article class="producto">
+        <figure>
+            <img class="img-producto" 
+                src="{{ url_for('static', filename='images/images_productos/guantesProPredator.jpg') }}" 
+                alt="Guantes de Portero">
+        </figure>
+
+        <h3>Guantes de Portero Predator Pro</h3>
+
+        <p class="precio" data-precio="129.99">
+            S/129.99
+        </p>
+
+        <div class="colores">
+            <span class="color negro" 
+                data-color="Negro" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/guantesProPredator.jpg') }}"></span>
+            
+            <span class="color verde" 
+                data-color="Verde" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/guantesProPredator_a.jpg') }}"></span>
+        </div>
+
+        <a href="{{ url_for('form') }}" 
+        class="btn-comprar" 
+        data-nombre="Guantes de Portero Predator Pro" 
+        data-precio="129.99" 
+        data-imagen="{{ url_for('static', filename='images/images_productos/guantesProPredator.jpg') }}" 
+        data-color="Negro">
+        Agregar al carrito
+        </a>
+    </article>
+
+    <article class="producto">
+        <figure>
+            <img class="img-producto" 
+                src="{{ url_for('static', filename='images/images_productos/canillerasAdidas.jpg') }}" 
+                alt="Canilleras Adidas">
+        </figure>
+
+        <h3>Canilleras Adidas Tiro Match</h3>
+
+        <p class="precio" data-precio="39.99">
+            S/39.99
+        </p>
+
+        <div class="colores">
+            <span class="color negro" 
+                data-color="Negro" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/canillerasAdidas.jpg') }}"></span>
+            
+            <span class="color blanco" 
+                data-color="Blanco" 
+                data-imagen="{{ url_for('static', filename='images/images_productos/canillerasAdidas_a.jpg') }}"></span>
+        </div>
+
+        <a href="{{ url_for('form') }}" 
+        class="btn-comprar" 
+        data-nombre="Canilleras Adidas Tiro Match" 
+        data-precio="39.99" 
+        data-imagen="{{ url_for('static', filename='images/images_productos/canillerasAdidas.jpg') }}" 
+        data-color="Negro">
+        Agregar al carrito
+        </a>
+    </article>
+        </div>
+    </section>
+</main>
+
+    <footer> 
+        <h3>SportZone los mejores en calidad</h3>       
+        <ul>
+            <li>
+                <a href="{{ url_for('info') }}#contacto">Contáctenos</a>
+            </li>
+            <li>
+                <a href="{{ url_for('info') }}#politicas">Políticas SportZone</a>
+            </li>
+        </ul>
+        <p>&copy;2025 SportZone tienda de artículos deportivos</p>
+        <address>Contacto : sportzona@gmail.com</address>
+    </footer>
+</body>
+</html>
